@@ -10,7 +10,7 @@ PRODUCT_NAME = (By.ID, 'productTitle')
 
 @when('Click on product')
 def click_product(context):
-    context.driver.find_element(By.XPATH, '//img[@src="https://m.media-amazon.com/images/I/711Au8WtNAL._MCnd_AC_UL400_.jpg"]').click()
+    context.driver.find_element(By.XPATH, "//span[@class='a-price-whole']").click()
     sleep(3)
 
 
@@ -22,7 +22,7 @@ def add_product(context):
 
 @when('Select size')
 def select_size(context):
-    context.driver.find_element(By.CSS_SELECTOR, 'input[aria-labelledby=size_name_0-announce]').click()
+    context.driver.find_element(By.CSS_SELECTOR, '#variation_size_name').click()
     sleep(3)
 
 
