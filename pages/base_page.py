@@ -29,7 +29,7 @@ class Page:
         print(f'Inputting text: {text}')
 
     def wait_for_element_click(self, *locator):
-        e = self.wait.until(EC.element_to_be_clickable(locator), message=f'Element not clickable by {locator}')
+        e = self.wait.until(EC.element_to_be_clickable(*locator), message=f'Element not clickable by {locator}')
         e.click()
 
     def wait_for_element_disappear(self, *locator):
@@ -50,4 +50,3 @@ class Page:
 
     def verify_url_contains_query(self, query):
         self.wait.until(EC.url_contains(query))
-
