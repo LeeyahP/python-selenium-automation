@@ -2,9 +2,6 @@ from selenium.webdriver.common.by import By
 from behave import given, when, then
 
 
-CHOOSE_BODY = (By.CSS_SELECTOR,"nav.header__inline-menu li list-menu-item[data-title='Body'")
-
-
 @given('Open main page')
 def open_cure_skin_main(context):
     context.app.main_page.open_main_page()

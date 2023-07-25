@@ -4,4 +4,4 @@ Feature: CAP-189
   Scenario:User can shop by category Body
     Given Open main page
     When Click to "Shop by category" - select Body
-    Then Verify "Body" header is shown
+    Then Verify Body header is shown
