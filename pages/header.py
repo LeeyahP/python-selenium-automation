@@ -12,4 +12,5 @@ class Header(Page):
         self.wait_for_element_click(*self.CATEGORY_NEW)
 
     def click_body_btn(self):
-        self.click(*self.BODY_BTN)
+        self.wait_for_element_click(*self.BODY_BTN)
+

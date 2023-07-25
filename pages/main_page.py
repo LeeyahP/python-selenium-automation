@@ -12,4 +12,4 @@ class MainPage(Page):
 
     def close_coupon_box(self):
         self.click(*self.X_BTN)
-        sleep(5)
+        sleep(7)

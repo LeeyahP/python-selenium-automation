@@ -11,7 +11,15 @@ def browser_init(context):
     """
     driver_path = ChromeDriverManager().install()
     service = Service(driver_path)
-    context.driver = webdriver.Chrome(service=service)
+    #context.driver = webdriver.Chrome(service=service)
+    options = webdriver.ChromeOptions()
+    options.add_argument('--headless')
+    context.driver = webdriver.Chrome(
+        chrome_options=options,
+        service=service
+    )
+
+    #context.driver = webdriver.Firefox(executable_path=r'C:\Users\leeya\automation\CureSkin-Automation-Internship\geckodriver.exe')
     context.driver.maximize_window()
     context.driver.implicitly_wait(4)
     context.driver.wait = WebDriverWait(context.driver, 10)
