@@ -1,3 +1,5 @@
+import time
+
 from pages.base_page import Page
 from selenium.webdriver.common.by import By
 
@@ -9,6 +11,8 @@ class Header(Page):
     BODY_BTN = (By.CSS_SELECTOR, '[data-title="Body"]')
 
     def click_category_btn(self):
+        self.wait_for_element_appear(*self.CATEGORY_NEW)
+        #time.sleep(4)
         self.wait_for_element_click(*self.CATEGORY_NEW)
 
     def click_body_btn(self):

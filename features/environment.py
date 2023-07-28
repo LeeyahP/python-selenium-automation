@@ -5,20 +5,31 @@ from webdriver_manager.chrome import ChromeDriverManager
 from app.application import Application
 
 
-def browser_init(context):
+def browser_init(context, test_name):
     """
     :param context: Behave context
     """
-    driver_path = ChromeDriverManager().install()
-    service = Service(driver_path)
+    #driver_path = ChromeDriverManager().install()
+    #service = Service(driver_path)
     #context.driver = webdriver.Chrome(service=service)
-    options = webdriver.ChromeOptions()
-    options.add_argument('--headless')
-    context.driver = webdriver.Chrome(
-        chrome_options=options,
-        service=service
-    )
+    #options = webdriver.ChromeOptions()
+    #options.add_argument('--headless')
+    #context.driver = webdriver.Chrome(
+        #chrome_options=options,
+        #service=service
+    #)
 
+### BROWSERSTACK ###
+    desired_cap = {
+        'browser': 'Safari',
+        'os_version': '13',
+        'os': 'OSX',
+        'name': test_name
+    }
+    bs_user ="leeyahpmoore_nHjoBf"
+    bs_key = "u75gCHgsRTJAvK5kpyTF"
+    url = f'http://{bs_user}:{bs_key}@hub-cloud.browserstack.com/wd/hub'
+    context.driver = webdriver.Remote(url, desired_capabilities=desired_cap)
     #context.driver = webdriver.Firefox(executable_path=r'C:\Users\leeya\automation\CureSkin-Automation-Internship\geckodriver.exe')
     context.driver.maximize_window()
     context.driver.implicitly_wait(4)
@@ -29,7 +40,7 @@ def browser_init(context):
 
 def before_scenario(context, scenario):
     print('\nStarted scenario: ', scenario.name)
-    browser_init(context)
+    browser_init(context, scenario.name)
 
 
 def before_step(context, step):
